@@ -1,4 +1,4 @@
-import React, { useState,useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/logo/Logo.png'
 import { IoIosSearch } from "react-icons/io";
@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <div>
-      <header className={`${theme == 'dark' ? 'header_light':'header_dark'}`}>
+      <header className={`${theme == 'dark' ? 'header_light' : 'header_dark'}`}>
         {/* <header className={`app ${theme}`}> */}
         <div className="page_width">
           <nav>
@@ -32,7 +32,7 @@ const Header = () => {
                   <Link to="/blogs">Blog</Link>
                 </li>
                 <li>
-                  <Link to="/single_post">Single Post</Link>
+                  <Link to="/create_blog_post">Create Blog Post</Link>
                 </li>
                 <li>
                   <Link to="/author">Pages</Link>
@@ -49,7 +49,7 @@ const Header = () => {
                 <li>
                   <button
                     onClick={toggleTheme}
-                  className={'background-change-button ${animationDirection}'}
+                    className={'background-change-button ${animationDirection}'}
                   >
                     <div className="sun-container" id='colorButton'>
                       <HiSun />

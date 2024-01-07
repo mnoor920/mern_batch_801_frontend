@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;800;900&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 * {
@@ -29,7 +28,8 @@ body {
   background-color: #ffffff;
   color: #181A2A;
 }
-.header_light .nav_link li a{
+
+.header_light .nav_link li a {
   color: #181A2A;
 }
 
@@ -181,11 +181,13 @@ nav {
 /* animation CSS */
 
 #colorButton {
-  transition: transform 0.5s ease; /* Adjust the duration to match your JavaScript setTimeout duration */
+  transition: transform 0.5s ease;
+  /* Adjust the duration to match your JavaScript setTimeout duration */
 }
 
 #colorButton.animate {
-  transform: translateX(50%); /* Adjust the distance to move left or right */
+  transform: translateX(50%);
+  /* Adjust the distance to move left or right */
 }
 
 
@@ -845,7 +847,7 @@ footer {
   position: relative;
   max-width: 1250px;
   margin: 0 auto;
-  
+
 }
 
 .bg_img .img_content {
@@ -1131,3 +1133,16 @@ footer {
 
 }
 
+.create_post_input {
+  margin-bottom: 1rem;
+}
+
+/* .creat_post_editor {
+ 
+  
+} */
+
+.creat_post_editor .ql-container {
+  background: #fff;
+  min-height: 500px;
+}
