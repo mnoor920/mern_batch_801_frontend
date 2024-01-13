@@ -3,10 +3,11 @@ import Img from '../../assets/images/author/author_1.png'
 import SPImg from '../../assets/images/single_post_imgs/SP.svg'
 import SPImg1 from '../../assets/images/single_post_imgs/SP_1.svg'
 import Ads from './ads'
+import parse from 'html-react-parser';
 
 
 
-function Post() {
+function Post({ blog }) {
     return (
         <div>
             <section className='single_post'>
@@ -14,13 +15,13 @@ function Post() {
                     <div className="inner_single_post">
                         {/* Blog Card */}
                         <div className="img_content">
-                            <button>Technology</button>
+                            <button> {blog.title} </button>
 
-                            <h2>The Impact of Technology on the Workplace: How Technology is Changing</h2>
+                            <h2> {blog.description} </h2>
 
                             <div className="author_info">
                                 <img src={Img} alt="" />
-                                <h5>Jason Francisco</h5>
+                                <h5> {blog.author_name} </h5>
                                 <p>August 20, 2022</p>
                             </div>
                         </div>
@@ -33,7 +34,10 @@ function Post() {
 
                         {/* Description */}
 
-                        <div className="post_desc">
+                        <div className="single_blog_data">
+                            {parse(blog.long_description)}
+                        </div>
+                        {/* <div className="post_desc">
 
                             <p>Traveling is an enriching experience that opens up new horizons, exposes us to different cultures, and creates memories that last a lifetime. However, traveling can also be stressful and overwhelming, especially if you don't plan and prepare adequately. In this blog article, we'll explore tips and tricks for a memorable journey and how to make the most of your travels.</p>
 
@@ -67,17 +71,17 @@ function Post() {
 
                         </div>
 
-                        {/* Image */}
+                        
 
                         <div className="post_img">
                             <img src={SPImg1} alt="" />
-                        </div>
+                        </div> */}
 
                     </div>
 
                     <Ads />
 
-                    <div className="inner_single_post">
+                    {/* <div className="inner_single_post">
 
                         <div className="post_desc">
 
@@ -119,7 +123,7 @@ function Post() {
 
                         </div>
 
-                    </div>
+                    </div> */}
                 </div>
 
             </section>

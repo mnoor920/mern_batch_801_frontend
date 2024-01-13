@@ -1146,3 +1146,15 @@ footer {
   background: #fff;
   min-height: 500px;
 }
+
+.single_blog_data p,
+h2,
+h3,
+h4,
+h5 {
+  color: #ffffff;
+}
+
+.single_blog_data img {
+  width: 100%;
+}
