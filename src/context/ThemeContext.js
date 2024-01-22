@@ -1,19 +1,70 @@
-import React, { createContext, useState } from 'react';
+// AuthContext.js
+import { createContext, useContext, useReducer, useState } from 'react';
 
-const ThemeContext = createContext();
+// Initial state
+const initialState = {
+  isAuthenticated: false,
+  user: null,
+  theme: 'light',
+};
 
-const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState('light');
+// Action types
+const LOGIN = 'LOGIN';
+const LOGOUT = 'LOGOUT';
+const TOGGLE_THEME = 'TOGGLE_THEME';
+
+// Reducer function
+const authReducer = (state, action) => {
+  switch (action.type) {
+    case LOGIN:
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.payload,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: null,
+      };
+    case TOGGLE_THEME:
+      return {
+        ...state,
+        theme: state.theme === 'light' ? 'dark' : 'light',
+      };
+    default:
+      return state;
+  }
+};
+
+// Create context
+const AuthContext = createContext();
+
+// AuthProvider component
+export const AuthProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(authReducer, initialState);
+
+  const login = (user) => {
+    dispatch({ type: LOGIN, payload: user });
+  };
+
+  const logout = () => {
+    dispatch({ type: LOGOUT });
+  };
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+    dispatch({ type: TOGGLE_THEME });
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <AuthContext.Provider value={{ ...state, login, logout, toggleTheme }}>
       {children}
-    </ThemeContext.Provider>
+    </AuthContext.Provider>
   );
 };
 
-export { ThemeProvider, ThemeContext };
+// Custom hook to use the context
+export const useAuth = () => {
+  return useContext(AuthContext);
+};

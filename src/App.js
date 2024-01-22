@@ -6,6 +6,7 @@ import TitlePage from "./pages/title";
 import AuthorContact from "./pages/features/authorContact";
 import SinglePost from "./pages/singlePost";
 import CreateBlogPost from "./pages/createBlog";
+import LoginPage from "./pages/loginPage";
 
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
           <Route path="/blogs" exact element={<TitlePage />} />
           <Route path="/author" exact element={<AuthorContact />} />
           <Route path="/blog_post/:id" exact element={<SinglePost />} />
+          <Route path="/login" exact element={<LoginPage />} />
+
           <Route path="/create_blog_post" exact element={<CreateBlogPost />} />
         </Routes>
       </Layout>

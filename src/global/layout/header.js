@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom';
 import Logo from '../../assets/logo/Logo.png'
 import { IoIosSearch } from "react-icons/io";
 import { HiSun } from "react-icons/hi";
-import { ThemeContext } from '../../context/ThemeContext';
+import { useAuth } from '../../context/ThemeContext';
 
 // import { IoIosCall } from "react-icons/io";
 
 const Header = () => {
+  const { isAuthenticated, user, theme, toggleTheme, logout } = useAuth();
 
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  // const { theme, toggleTheme } = useContext(ThemeContext);
 
-
+  console.log("Authnetication", isAuthenticated, user)
 
 
   return (
@@ -40,12 +41,13 @@ const Header = () => {
                 <li>
                   <Link to="#">Contact</Link>
                 </li>
-                <li>
-                  <div className="search-bar">
-                    <input type="text" placeholder="Search" />
-                    <IoIosSearch />
-                  </div>
-                </li>
+                {isAuthenticated ? <li onClick={logout} >
+                  <Link>Logout</Link>
+                </li> : <li>
+                  <Link to="/login">Login</Link>
+                </li>}
+
+
                 <li>
                   <button
                     onClick={toggleTheme}

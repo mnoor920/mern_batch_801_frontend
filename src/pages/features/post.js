@@ -15,27 +15,29 @@ function Post({ blog }) {
                     <div className="inner_single_post">
                         {/* Blog Card */}
                         <div className="img_content">
-                            <button> {blog.title} </button>
+                            <button> {blog?.title} </button>
 
-                            <h2> {blog.description} </h2>
+                            <h2> {blog?.description} </h2>
 
                             <div className="author_info">
                                 <img src={Img} alt="" />
-                                <h5> {blog.author_name} </h5>
+                                <h5> {blog?.author_name} </h5>
                                 <p>August 20, 2022</p>
                             </div>
                         </div>
 
                         {/* Image */}
+                        {blog?.title == 1 && (
+                            <div className="post_img">
+                                <img src={SPImg} alt="" />
+                            </div>
+                        )}
 
-                        <div className="post_img">
-                            <img src={SPImg} alt="" />
-                        </div>
 
                         {/* Description */}
 
                         <div className="single_blog_data">
-                            {parse(blog.long_description)}
+                            {parse(blog?.long_description ? blog?.long_description : '')}
                         </div>
                         {/* <div className="post_desc">
 
